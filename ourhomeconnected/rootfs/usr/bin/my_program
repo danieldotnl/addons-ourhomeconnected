@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "All done!" > /share/ourhomeconnected_addon_output.txt
