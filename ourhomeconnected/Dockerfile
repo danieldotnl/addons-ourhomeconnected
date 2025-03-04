@@ -12,7 +12,7 @@ RUN \
 RUN python3 --version || apk add --no-cache python3
 
 # Copy uv from its official image
-COPY --from=ghcr.io/astral-sh/uv:latest /usr/local/bin/uv /usr/local/bin/uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 # Download and install the wheel file
 ARG WHEEL_VERSION
