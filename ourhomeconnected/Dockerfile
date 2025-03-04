@@ -8,6 +8,9 @@ RUN \
     curl -sSLf -o /usr/bin/tempio \
     "https://github.com/home-assistant/tempio/releases/download/${TEMPIO_VERSION}/tempio_${BUILD_ARCH}"
 
+# Install Python and pip
+RUN apk add --no-cache python3 py3-pip
+
 # Download and install the wheel file
 ARG WHEEL_VERSION
 RUN \
