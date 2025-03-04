@@ -19,7 +19,7 @@ ARG WHEEL_VERSION
 RUN \
     curl -sSLf -o /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl \
     "https://github.com/danieldotnl/ohc-addon-backend/releases/download/v${WHEEL_VERSION}/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl" && \
-    uv venv --python 3.13 %% \
+    uv venv --python 3.13 && \
     uv pip install /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl && \
     rm /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl
 
