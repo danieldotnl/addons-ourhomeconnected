@@ -10,14 +10,16 @@ RUN \
 
 # Check Python version and install if needed
 RUN python3 --version || apk add --no-cache python3
-RUN pip3 --version || apk add --no-cache py3-pip
+
+# Copy uv from its official image
+COPY --from=ghcr.io/astral-sh/uv:latest /usr/local/bin/uv /usr/local/bin/uv
 
 # Download and install the wheel file
 ARG WHEEL_VERSION
 RUN \
     curl -sSLf -o /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl \
     "https://github.com/danieldotnl/ohc-addon-backend/releases/download/v${WHEEL_VERSION}/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl" && \
-    pip3 install /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl && \
+    uv pip install --system /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl && \
     rm /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl
 
 # Copy root filesystem
