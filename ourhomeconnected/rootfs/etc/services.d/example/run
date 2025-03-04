@@ -9,4 +9,4 @@
 bashio::log.info "Starting Our Home Connected backend..."
 
 # Run the FastAPI app
-exec /opt/venv/bin/python -m ohc_backend
+exec python3 -m ohc_backend
