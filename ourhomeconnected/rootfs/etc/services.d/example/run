@@ -4,9 +4,13 @@
 # s6-overlay docs: https://github.com/just-containers/s6-overlay
 # ==============================================================================
 
-# Add your code here
 
 bashio::log.info "Starting Our Home Connected backend..."
+LOG_LEVEL=$(bashio::config 'log_level')
+HA_SYNC_INTERVAL=$(bashio::config 'sync_interval')
 
-# Run the FastAPI app
+export LOG_LEVEL
+export HA_SYNC_INTERVAL
+
+# Run the Our Home Connected fastapi app
 exec python3 -m ohc_backend

@@ -17,12 +17,10 @@ panel_title: "OHC"
 homeassistant_api: true
 environment:
   ENVIRONMENT: "prod"
-map:
-  - share:rw
 options:
-  message: "Hello world..."
+  sync_interval: 300
   log_level: info
 schema:
-  message: "str?"
-  log_level: list(trace|debug|info|warning|error|fatal)
+  sync_interval: int
+  log_level: list(debug|info|warning|error)
 image: "ghcr.io/danieldotnl/{arch}-addon-ourhomeconnected"
