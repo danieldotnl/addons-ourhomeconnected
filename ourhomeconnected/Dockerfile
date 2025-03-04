@@ -14,10 +14,10 @@ RUN apk add --no-cache python3 py3-pip
 # Download and install the wheel file
 ARG WHEEL_VERSION
 RUN \
-    curl -sSLf -o /tmp/ohc-backend.whl \
+    curl -sSLf -o /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl \
     "https://github.com/danieldotnl/ohc-addon-backend/releases/download/v${WHEEL_VERSION}/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl" && \
-    pip3 install /tmp/ohc-backend.whl && \
-    rm /tmp/ohc-backend.whl
+    pip3 install /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl && \
+    rm /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl
 
 # Copy root filesystem
 COPY rootfs /
