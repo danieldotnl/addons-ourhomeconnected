@@ -6,14 +6,7 @@
 
 # Add your code here
 
-# Declare variables
-declare message
+bashio::log.info "Starting Our Home Connected backend..."
 
-## Get the 'message' key from the user config options.
-message=$(bashio::config 'message')
-
-## Print the message the user supplied, defaults to "Hello World..."
-bashio::log.info "${message:="Hello World..."}"
-
-## Run your program
-exec /usr/bin/my_program
+# Run the FastAPI app
+exec python3 -m ohc_backend
