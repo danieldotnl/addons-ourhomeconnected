@@ -11,13 +11,14 @@ RUN \
 # Copy uv from its official image
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Download and install the wheel file
-ARG WHEEL_VERSION
+# Install package from PyPI
+ARG PACKAGE_VERSION=latest
 RUN \
-    curl -sSLf -o /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl \
-    "https://github.com/danieldotnl/ohc-addon-backend/releases/download/v${WHEEL_VERSION}/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl" && \
-    uv pip install --system /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl && \
-    rm /tmp/ohc_backend-${WHEEL_VERSION}-py3-none-any.whl
+    if [ "${PACKAGE_VERSION}" = "latest" ]; then \
+    uv pip install --system ohc-backend; \
+    else \
+    uv pip install --system ohc-backend==${PACKAGE_VERSION}; \
+    fi
 
 # Copy root filesystem
 COPY rootfs /
